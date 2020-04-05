@@ -11,7 +11,7 @@ const App = ({ shows }) => (
       </Typography>
       <Box mt="1">
         <Typography align="center" variant="body1">
-          coming soon
+          coming soon 1
         </Typography>
       </Box>
     </Box>
