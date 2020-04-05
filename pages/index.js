@@ -9,6 +9,11 @@ const App = ({ shows }) => (
       <Typography align="center" variant="h2" color="textSecondary">
         topmek
       </Typography>
+      <Box mt="1">
+        <Typography align="center" variant="body1">
+          coming soon
+        </Typography>
+      </Box>
     </Box>
   </Layout>
 );
