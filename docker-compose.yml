@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  db:
+#    container_name: postgres
+#    restart: always
+    image: postgres
+    environment:
+      POSTGRES_USER: gug007
+      POSTGRES_DB: topmek
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+  client:
+    build: ./client
+    ports:
+      - 3000:3000
+    environment:
+      SERVER_HOST: "server:4010"
+  server:
+    build: ./server
+#    depends_on:
+#      - db
+    environment:
+      DATABASE_URL: postgres://gug007:password@db/topmek
+      PORT: 5432
+    ports:
+      - 4010:4010
+    entrypoint: ./wait-for-it.sh db:5432 -- npm start
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+#    depends_on:
+#      - server
+#      - client

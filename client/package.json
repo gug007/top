@@ -1,12 +1,12 @@
 {
   "name": "topmek",
   "version": "1.0.0",
-  "description": "",
+  "description": "topmek",
   "main": "index.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p 80"
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.8",
     "@material-ui/icons": "^4.9.1",
+    "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.3.3",
     "prettier": "^2.0.2",
