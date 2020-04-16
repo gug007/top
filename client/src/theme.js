@@ -19,6 +19,11 @@ const theme = createMuiTheme({
   },
   shadows,
   overrides: {
+    MuiTypography: {
+      h2: {
+        fontSize: 22
+      }
+    },
     MuiExpansionPanel: {
       root: {
         borderRadius: 4,

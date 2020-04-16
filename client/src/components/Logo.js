@@ -18,9 +18,8 @@ const Logo = () => (
         top
       </Typography>
     </Box>
-   
     */}
-    <Typography variant="h2" color="textSecondary">
+    <Typography variant="h2" component="span" color="textPrimary">
       topmek
     </Typography>
   </Box>
