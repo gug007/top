@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import Logo from "../src/components/Logo";
 import Link from "../src/components/Link";
 import request from "../api/request";
-// import request from "../api/request";
 
 const Objects = ({ objects }) => (
   <Layout>

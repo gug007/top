@@ -10,7 +10,9 @@ const App = ({ tags }) => (
       <Logo />
       {tags.map((v, i) => (
         <Box key={i} m={1.5} display="flex" justifyContent="center">
-          <Link href={v.id.toString()}>{v.name}</Link>
+          <Link href="/[id]" as={v.id.toString()}>
+            {v.name}
+          </Link>
         </Box>
       ))}
     </Box>
