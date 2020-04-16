@@ -1,12 +1,16 @@
 FROM node:10
 
-WORKDIR /usr/src/app
+ARG NODE_ENV
+ENV NODE_ENV $NODE_ENV
 
+WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
-
 COPY . .
 
-RUN npm run build
-
-CMD [ "npm", "start" ]
+CMD if [ ${NODE_ENV} = production ]; then \
+	npm run build && \
+	npm start; \
+	else \
+	npm run dev; \
+	fi

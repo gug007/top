@@ -23,13 +23,15 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "dotenv": "^6.0.0",
+    "nodemon": "^2.0.3",
     "pg": "^7.15.2",
     "pm2": "^4.2.3",
     "prettier": "^1.19.1",
     "sequelize-cli": "^5.5.1"
   },
   "scripts": {
-    "start": "npm run seed && pm2-runtime index.js",
+    "start": "npm run seed && nodemon index.js",
+    "prod": "npm run seed && pm2-runtime index.js",
     "seed": "cd src && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "drop": "cd src && npx sequelize-cli db:migrate:undo:all",
     "rebuild": "npm run drop && npm run seed"
