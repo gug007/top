@@ -31,7 +31,7 @@ const Objects = ({ objects, tag }) => (
         flexGrow={1}
         flexDirection="column"
       >
-        <Typography variant="h1" align="center" display="block">
+        <Typography variant="h1" color="textSecondary">
           {tag.name} do not have any objects
         </Typography>
         <Box mt={2}>
