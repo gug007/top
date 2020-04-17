@@ -5,7 +5,7 @@ import request from "../api/request";
 
 const App = ({ tags }) => (
   <Layout>
-    <Box m="auto">
+    <Box mt={4}>
       {tags.map((v, i) => (
         <Box key={i} m={1.5} display="flex" justifyContent="center">
           <Link href="/[id]" as={v.id.toString()}>

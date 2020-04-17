@@ -10,11 +10,12 @@ const includeMessage = [
 ];
 */
 
-export const get = () => {
-  console.log(Tag.findAll);
-  return Tag.findAll({
-    // include: includeMessage
-  });
+export const get = ({ id }) => {
+  if (id) {
+    return Tag.findOne({ where: { id } });
+  }
+
+  return Tag.findAll();
 };
 
 export const post = async ({ title }) => {

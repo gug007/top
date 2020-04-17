@@ -6,14 +6,17 @@ module.exports = (sequelize, DataTypes) => {
       id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
       userId: DataTypes.INTEGER,
       name: DataTypes.STRING,
-      createdAt: DataTypes.DATE,
-      updatedAt: DataTypes.DATE
+      createdAt: DataTypes.DATE
+      // updatedAt: DataTypes.DATE
     },
     {}
   );
   ObjectModel.associate = function(models) {
     ObjectModel.belongsTo(models.User, {
       foreignKey: "userId"
+    });
+    ObjectModel.hasMany(models.ObjectImage, {
+      foreignKey: "objectId"
     });
   };
   return ObjectModel;

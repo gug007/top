@@ -14,6 +14,7 @@ router.use((req, res, next) => {
 router.post("/signup", user.signup);
 router.post("/login", user.login);
 router.get("/auth", user.auth, user.get);
+router.get("/tags/:id", tags.get);
 router.get("/tags", tags.get);
 router.get("/objectsByTagId/:id", objects.get);
 

@@ -6,6 +6,12 @@ module.exports = {
       "Tags",
       [
         {
+          name: "cryptocurrencies",
+          userId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
           name: "phones",
           userId: 1,
           createdAt: new Date(),
@@ -13,12 +19,6 @@ module.exports = {
         },
         {
           name: "models",
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          name: "cars",
           userId: 1,
           createdAt: new Date(),
           updatedAt: new Date()

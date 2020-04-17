@@ -1,7 +1,7 @@
 import * as storage from "../../storage/tags";
 
 export const get = async (req, res) => {
-  const { id } = req.queryAndBody;
+  const { id } = req.params;
   try {
     res.send(await storage.get({ id }));
   } catch (e) {
