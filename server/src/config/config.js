@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 const DATABASE_URL = 'postgres://gug007@localhost/topmek'
 
 module.exports = {

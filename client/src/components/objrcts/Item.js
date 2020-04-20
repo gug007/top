@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import ButtonBase from "@material-ui/core/ButtonBase";
+import staticUrl from "../../utils/static";
 
 const Item = ({ data }) => (
   <Box p={1.5} clone display="flex" flexDirection="column">
@@ -17,6 +18,7 @@ const Item = ({ data }) => (
         owerflow="hidden"
         display="flex"
         justifyContent="center"
+        alignItems="center"
       >
         {data.images.length > 0 ? (
           <img
@@ -24,7 +26,7 @@ const Item = ({ data }) => (
               maxWidth: "100%",
               maxHeight: "100%"
             }}
-            src={`./obj/${data.images[0].id}/ori.jpg`}
+            src={staticUrl(`obj/${data.id}/${data.images[0].id}/320.jpg`)}
           />
         ) : (
           <Box

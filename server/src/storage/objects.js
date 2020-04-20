@@ -1,4 +1,5 @@
 import model from "../models";
+import * as s3 from "./s3";
 
 const includeImage = [
   {
@@ -20,11 +21,22 @@ export const get = async ({ id }) => {
   });
 };
 
-export const post = async ({ title }) => {
-  return await model.ObjectsTag.create(
-    { title },
-    {
-      // include: includeMessage
-    }
-  );
+export const post = async ({ tagId, name, userId, imageUrl }) => {
+  const object = await model.Object.create({ name, userId });
+  await model.ObjectsTag.create({ objectId: object.id, tagId, userId });
+  const image = await model.ObjectImage.create({
+    objectId: object.id,
+    userId,
+    name: ""
+  });
+
+  if (imageUrl) {
+    const getPath = imageName =>
+      `obj/${object.id}/${image.id}/${imageName}.jpg`;
+    s3.post(imageUrl, getPath("ori"), 1024);
+    s3.post(imageUrl, getPath("320"), 320);
+    s3.post(imageUrl, getPath("100"), 100);
+  }
+
+  return object;
 };

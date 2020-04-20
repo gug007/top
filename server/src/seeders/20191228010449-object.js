@@ -1,49 +1,26 @@
 "use strict";
 
+const objects = [
+  ["Iphone 11 Pro", 1],
+  ["Samsung Galaxy s20", 1],
+  ["Bitcoin", 1],
+  ["Ethereum", 1],
+  ["EOS", 1]
+];
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert(
-      "Objects",
-      [
-        {
-          id: 1,
-          name: "Iphone 11 Pro",
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          id: 2,
-          name: "Samsung Galaxy s20",
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-
-        {
-          id: 3,
-          name: "Bitcoin",
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          id: 4,
-          name: "Ethereum",
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          id: 5,
-          name: "EOS",
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        }
-      ],
-      {}
-    );
+    return Promise.resolve();
+    /*return queryInterface.bulkInsert(
+       "Objects",
+       objects.map(([name, userId]) => ({
+         name: name,
+         userId: userId,
+         createdAt: new Date(),
+         updatedAt: new Date()
+       })),
+       {}
+     );*/
   },
 
   down: (queryInterface, Sequelize) => {

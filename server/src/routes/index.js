@@ -16,7 +16,9 @@ router.post("/login", user.login);
 router.get("/auth", user.auth, user.get);
 router.get("/tags/:id", tags.get);
 router.get("/tags", tags.get);
+router.post("/tags", tags.post);
 router.get("/objectsByTagId/:id", objects.get);
+router.post("/objects", objects.post);
 
 /*
 router.get("/messages/:id", messages.get);

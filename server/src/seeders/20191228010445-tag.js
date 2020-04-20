@@ -1,31 +1,24 @@
 "use strict";
 
+const tags = [
+  ["cryptocurrencies", 1],
+  ["phones", 1],
+  ["models", 1]
+];
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert(
+    return Promise.resolve();
+    /*return queryInterface.bulkInsert(
       "Tags",
-      [
-        {
-          name: "cryptocurrencies",
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          name: "phones",
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          name: "models",
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-      ],
+      tags.map(([name, userId]) => ({
+        name: name,
+        userId: userId,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      })),
       {}
-    );
+    );*/
   },
 
   down: (queryInterface, Sequelize) => {

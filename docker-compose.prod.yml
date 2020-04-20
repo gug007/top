@@ -1,10 +1,5 @@
 version: "3.7"
 
 services:
-  client:
-    environment:
-      NODE_ENV: production
   server:
-    environment:
-      NODE_ENV: production
     entrypoint: ./wait-for-it.sh db:5432 -- npm run prod
