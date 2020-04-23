@@ -1,5 +1,15 @@
+import fs from "fs";
 import model from "../models";
 import * as s3 from "./s3";
+import { fetchImage, resize } from "./images";
+
+const NODE_ENV = process.env.NODE_ENV;
+
+const size = {
+  small: 100,
+  medium: 320,
+  big: 1024
+};
 
 const includeImage = [
   {
@@ -31,11 +41,22 @@ export const post = async ({ tagId, name, userId, imageUrl }) => {
   });
 
   if (imageUrl) {
+    const imageData = await fetchImage(imageUrl);
     const getPath = imageName =>
       `obj/${object.id}/${image.id}/${imageName}.jpg`;
-    s3.post(imageUrl, getPath("ori"), 1024);
-    s3.post(imageUrl, getPath("320"), 320);
-    s3.post(imageUrl, getPath("100"), 100);
+    if (NODE_ENV === "development") {
+      await fs.promises.mkdir(`public/obj/${object.id}/${image.id}`, {
+        recursive: true
+      });
+
+      resize(imageData, size.big).toFile(`public/${getPath(size.big)}`);
+      resize(imageData, size.medium).toFile(`public/${getPath(size.medium)}`);
+      resize(imageData, size.small).toFile(`public/${getPath(size.small)}`);
+    } else {
+      s3.post(resize(imageData, size.big), getPath(size.big));
+      s3.post(resize(imageData, size.medium), getPath(size.medium));
+      s3.post(resize(imageData, size.small), getPath(size.small));
+    }
   }
 
   return object;

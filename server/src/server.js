@@ -11,6 +11,7 @@ const app = express();
 app.use(accessControl);
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use("/static", express.static("public"));
 app.use(routes);
 
 app.listen(APP_PORT, () => console.log("[API SERVER]", APP_PORT));
