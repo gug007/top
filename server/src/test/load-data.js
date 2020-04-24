@@ -2,13 +2,13 @@ import { post } from "./request";
 import emptyDirectory from "../storage/s3/emptyDirectory";
 import { BUCKET_NAME } from "../storage/s3/s3";
 import cryptocurrencies from "./data/cryptocurrencies";
+import UFCFighters from "./data/UFCFighters";
 
 const userId = 1;
 
 const tags = [
-  ["cryptocurrencies", cryptocurrencies],
-  ["phones", [["Iphone 11 Pro"], ["Samsung Galaxy s20"]]],
-  ["models"]
+  ["Cryptocurrencies", cryptocurrencies],
+  ["UFC fighters", UFCFighters]
 ];
 
 function createObjects(tagId, objects) {

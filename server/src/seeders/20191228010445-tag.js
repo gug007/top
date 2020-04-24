@@ -1,9 +1,8 @@
 "use strict";
 
 const tags = [
-  ["cryptocurrencies", 1],
-  ["phones", 1],
-  ["models", 1]
+  ["Cryptocurrencies", 1],
+  ["UFC fighters", 1]
 ];
 
 module.exports = {
