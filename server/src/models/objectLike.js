@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const ObjectsTag = sequelize.define(
-    "ObjectsTag",
+  const ObjectLike = sequelize.define(
+    "ObjectLike",
     {
       id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
       userId: DataTypes.INTEGER,
@@ -12,10 +12,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  ObjectsTag.associate = function(models) {
-    ObjectsTag.hasMany(models.User, {
-      foreignKey: "id"
+  ObjectLike.associate = function(models) {
+    ObjectLike.belongsTo(models.User, {
+      foreignKey: "userId"
+    });
+    ObjectLike.belongsTo(models.Tag, {
+      foreignKey: "tagId"
+    });
+    ObjectLike.belongsTo(models.Object, {
+      foreignKey: "objectId"
     });
   };
-  return ObjectsTag;
+  return ObjectLike;
 };

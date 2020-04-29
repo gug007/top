@@ -18,6 +18,9 @@ module.exports = (sequelize, DataTypes) => {
     ObjectModel.hasMany(models.ObjectImage, {
       foreignKey: "objectId"
     });
+    ObjectModel.hasMany(models.ObjectLike, {
+      foreignKey: "objectId"
+    });
   };
   return ObjectModel;
 };

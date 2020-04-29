@@ -14,6 +14,9 @@ const size = {
 const includeImage = [
   {
     model: model.ObjectImage
+  },
+  {
+    model: model.ObjectLike
   }
 ];
 
@@ -26,8 +29,12 @@ export const get = async ({ id }) => {
     include: includeImage
   });
   return objects.map(v => {
-    const { ObjectImages, ...rest } = v.dataValues;
-    return { ...rest, images: ObjectImages.map(im => ({ id: im.id })) };
+    const { ObjectImages, ObjectLikes, ...rest } = v.dataValues;
+    return {
+      ...rest,
+      likes: ObjectLikes,
+      images: ObjectImages.map(im => ({ id: im.id }))
+    };
   });
 };
 
