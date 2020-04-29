@@ -16,10 +16,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "userId"
     });
     ObjectModel.hasMany(models.ObjectImage, {
-      foreignKey: "objectId"
+      foreignKey: "objectId",
+      as: "images"
     });
     ObjectModel.hasMany(models.ObjectLike, {
-      foreignKey: "objectId"
+      foreignKey: "objectId",
+      as: "likes"
     });
   };
   return ObjectModel;
