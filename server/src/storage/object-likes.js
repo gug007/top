@@ -1,6 +1,6 @@
 import model, { ObjectLike } from "../models";
 
-export const post = async ({ userId, objectId, tagId }) => {
+export const post = async (userId, { objectId, tagId }) => {
   const likes = await model.ObjectLike.findAll({
     where: { userId, objectId, tagId }
   });

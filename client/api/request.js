@@ -1,5 +1,6 @@
 import fetch from "isomorphic-unfetch";
 import getConfig from "next/config";
+import { getCookie } from "../src/utils/cookie";
 
 const isBrowser =
   typeof window !== "undefined" && typeof window.document !== "undefined";
@@ -20,7 +21,8 @@ export const post = (endpoint, options = {}) =>
   request(endpoint, {
     method: "post",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      token: getCookie("token")
     },
     body: JSON.stringify(options.body)
   });

@@ -15,8 +15,8 @@ const Objects = ({ objects: initialObjects = [], tag = {} }) => {
   const [objects, setObjects] = useState(initialObjects);
 
   const handleLike = async objectId => {
-    // TODO: delete user id
-    await createLike({ userId, tagId: tag.id, objectId });
+    // TODO: update user data for guest
+    await createLike({ tagId: tag.id, objectId });
     setObjects(await loadObjects(encodeName(tag.name)));
   };
 

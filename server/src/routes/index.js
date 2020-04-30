@@ -24,7 +24,7 @@ router.post("/tags", tags.post);
 router.get("/objectsByTag/:id", objects.get);
 router.post("/objects", objects.post);
 
-router.post("/objects/like", objectLikes.post);
+router.post("/objects/like", user.auth, objectLikes.post);
 
 /*
 router.get("/messages/:id", messages.get);
