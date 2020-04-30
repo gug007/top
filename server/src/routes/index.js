@@ -21,7 +21,7 @@ router.get("/auth", user.auth, user.getUser);
 router.get("/tags/:id", tags.get);
 router.get("/tags", tags.get);
 router.post("/tags", tags.post);
-router.get("/objectsByTagId/:id", objects.get);
+router.get("/objectsByTag/:id", objects.get);
 router.post("/objects", objects.post);
 
 router.post("/objects/like", objectLikes.post);

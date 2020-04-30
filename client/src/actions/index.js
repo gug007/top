@@ -12,7 +12,7 @@ export const isAuthenticated = async () => {
 };
 
 export const loadTag = id => request(`tags/${id}`);
-export const loadObjectsByTagId = id => request(`objectsByTagId/${id}`);
+export const loadObjects = id => request(`objectsByTag/${id}`);
 
 export const createLike = async body => {
   await isAuthenticated();

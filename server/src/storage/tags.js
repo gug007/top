@@ -9,7 +9,7 @@ const include = [
 
 export const get = ({ id }) => {
   if (id) {
-    return Tag.findOne({ where: { id } });
+    return Tag.findOne({ where: { name: id } });
   }
   return Tag.findAll({
     order: [["id", "DESC"]],

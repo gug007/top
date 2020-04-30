@@ -5,13 +5,14 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import Link from "../src/components/Link";
 import request from "../api/request";
+import { decodeName } from "../src/utils";
 
 const App = ({ tags }) => (
   <Layout>
     <Box mt={4}>
       {orderBy(tags, v => v.likes.length, "desc").map((v, i) => (
         <Box key={i} m={1.5} display="flex" justifyContent="center">
-          <Link href="/[id]" as={v.id.toString()}>
+          <Link href="/[id]" as={decodeName(v.name)}>
             {v.name}
           </Link>
           <Box pl={0.5} clone>

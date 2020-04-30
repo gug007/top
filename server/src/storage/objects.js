@@ -23,9 +23,12 @@ const include = [
 ];
 
 export const get = async ({ id }) => {
+  const tag = await model.Tag.findOne({ where: { name: id } });
+
   const ids = await model.ObjectsTag.findAll({
-    where: { tagId: id }
+    where: { tagId: tag.id }
   }).map(v => v.objectId);
+
   const objects = await model.Object.findAll({
     where: { id: ids },
     include

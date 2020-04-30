@@ -6,7 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Item from "../src/components/objrcts/Item";
-import { loadTag, loadObjectsByTagId, createLike } from "../src/actions";
+import { loadTag, loadObjects, createLike } from "../src/actions";
+import { encodeName } from "../src/utils";
 
 const userId = 1;
 
@@ -16,7 +17,7 @@ const Objects = ({ objects: initialObjects = [], tag = {} }) => {
   const handleLike = async objectId => {
     // TODO: delete user id
     await createLike({ userId, tagId: tag.id, objectId });
-    setObjects(await loadObjectsByTagId(tag.id));
+    setObjects(await loadObjects(encodeName(tag.name)));
   };
 
   const list = orderBy(objects, v => v.likes.length, "desc");
@@ -66,10 +67,8 @@ const Objects = ({ objects: initialObjects = [], tag = {} }) => {
 
 Objects.getInitialProps = async ({ query }) => {
   try {
-    const [objects, tag] = await Promise.all([
-      loadObjectsByTagId(query.id),
-      loadTag(query.id)
-    ]);
+    const id = encodeName(query.id);
+    const [objects, tag] = await Promise.all([loadObjects(id), loadTag(id)]);
     return { objects, tag };
   } catch (e) {
     return { error: "" };
