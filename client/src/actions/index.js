@@ -14,7 +14,4 @@ export const isAuthenticated = async () => {
 export const loadTag = id => request(`tags/${id}`);
 export const loadObjects = id => request(`objectsByTag/${id}`);
 
-export const createLike = async body => {
-  await isAuthenticated();
-  return post(`objects/like`, { body: body });
-};
+export const createLike = async body => post(`objects/like`, { body: body });

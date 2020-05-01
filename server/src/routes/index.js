@@ -16,7 +16,7 @@ router.post("/signup", user.signup);
 router.post("/login", user.login);
 router.post("/guest", user.guest);
 router.get("/users", user.get);
-router.get("/auth", user.auth, user.getUser);
+router.post("/auth", user.auth, user.getUser);
 
 router.get("/tags/:id", tags.get);
 router.get("/tags", tags.get);

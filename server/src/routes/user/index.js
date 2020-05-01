@@ -14,12 +14,20 @@ export const getUser = async (req, res) => {
     id: req.user.id,
     email: req.user.email
   });
-  return res.json({
-    id: user.id,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email
-  });
+
+  if (user) {
+    return res.json({
+      success: true,
+      user: {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email
+      }
+    });
+  }
+
+  res.status(500).json({ error: "User not found" });
 };
 
 export const signup = async (req, res) => {

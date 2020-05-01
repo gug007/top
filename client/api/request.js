@@ -22,7 +22,8 @@ export const post = (endpoint, options = {}) =>
     method: "post",
     headers: {
       "Content-Type": "application/json",
-      token: getCookie("token")
+      token: getCookie("token"),
+      ...options.headers
     },
     body: JSON.stringify(options.body)
   });

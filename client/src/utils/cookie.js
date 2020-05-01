@@ -1,4 +1,8 @@
 export function getCookie(name) {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
   let matches = document.cookie.match(
     new RegExp(
       "(?:^|; )" +

@@ -8,14 +8,14 @@ import Button from "@material-ui/core/Button";
 import Item from "../src/components/objrcts/Item";
 import { loadTag, loadObjects, createLike } from "../src/actions";
 import { encodeName } from "../src/utils";
-
-const userId = 1;
+import { useUser } from "../src/components/users/AuthContext";
 
 const Objects = ({ objects: initialObjects = [], tag = {} }) => {
   const [objects, setObjects] = useState(initialObjects);
+  const { user, isAuth } = useUser();
 
   const handleLike = async objectId => {
-    // TODO: update user data for guest
+    await isAuth();
     await createLike({ tagId: tag.id, objectId });
     setObjects(await loadObjects(encodeName(tag.name)));
   };
@@ -36,7 +36,7 @@ const Objects = ({ objects: initialObjects = [], tag = {} }) => {
               <Grid key={i} item xs={12} sm={6} md={3}>
                 <Item
                   data={v}
-                  userId={userId}
+                  userId={user ? user.id : null}
                   onLike={() => handleLike(v.id)}
                 />
               </Grid>
