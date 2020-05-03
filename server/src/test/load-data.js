@@ -48,4 +48,4 @@ const init = async () => {
   createTags();
 };
 
-// init();
+init();
