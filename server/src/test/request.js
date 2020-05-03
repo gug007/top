@@ -5,7 +5,8 @@ const request = (url, { method = "GET", body }) => {
     method,
     mode: "cors",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      token: global.token
     },
     body: JSON.stringify(body)
   }).then(response => response.json());

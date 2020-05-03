@@ -1,9 +1,12 @@
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
+import cookies from "next-cookies";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
+import { AuthProvider } from "../src/components/users/AuthContext";
+import { post } from "../api/request";
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -15,8 +18,7 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
-
+    const { Component, pageProps, user } = this.props;
     return (
       <React.Fragment>
         <Head>
@@ -27,11 +29,32 @@ export default class MyApp extends App {
           />
         </Head>
         <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
-          <Component {...pageProps} />
+          <AuthProvider initialUser={user}>
+            <Component {...pageProps} />
+          </AuthProvider>
         </ThemeProvider>
       </React.Fragment>
     );
   }
 }
+
+MyApp.getInitialProps = async ({ ctx, Component }) => {
+  let user = null;
+  const token = cookies(ctx).token;
+  let pageProps = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  pageProps.query = ctx.query;
+  try {
+    const response = await post("auth", { headers: { token } });
+    user = response.success ? response.user : null;
+  } catch (e) {
+    // TODO: handle error
+  }
+  return {
+    pageProps,
+    user
+  };
+};

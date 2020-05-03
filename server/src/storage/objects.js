@@ -11,23 +11,35 @@ const size = {
   big: 1024
 };
 
-const includeImage = [
+const include = [
   {
-    model: model.ObjectImage
+    model: model.ObjectImage,
+    as: "images"
+  },
+  {
+    model: model.ObjectLike,
+    as: "likes"
   }
 ];
 
 export const get = async ({ id }) => {
+  const tag = await model.Tag.findOne({ where: { name: id } });
+
   const ids = await model.ObjectsTag.findAll({
-    where: { tagId: id }
+    where: { tagId: tag.id }
   }).map(v => v.objectId);
+
   const objects = await model.Object.findAll({
     where: { id: ids },
-    include: includeImage
+    include
   });
+
   return objects.map(v => {
-    const { ObjectImages, ...rest } = v.dataValues;
-    return { ...rest, images: ObjectImages.map(im => ({ id: im.id })) };
+    const { images, ...rest } = v.dataValues;
+    return {
+      ...rest,
+      images: images.map(im => ({ id: im.id }))
+    };
   });
 };
 

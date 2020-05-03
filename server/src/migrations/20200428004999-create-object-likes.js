@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Tags", {
+    return queryInterface.createTable("ObjectLikes", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,12 +13,21 @@ module.exports = {
         references: { model: { tableName: "Users" }, key: "id" },
         allowNull: false
       },
-      name: { type: Sequelize.STRING },
+      tagId: {
+        type: Sequelize.INTEGER,
+        references: { model: { tableName: "Tags" }, key: "id" },
+        allowNull: false
+      },
+      objectId: {
+        type: Sequelize.INTEGER,
+        references: { model: { tableName: "Objects" }, key: "id" },
+        allowNull: false
+      },
       createdAt: { allowNull: false, type: Sequelize.DATE },
       updatedAt: { allowNull: false, type: Sequelize.DATE }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Tags");
+    return queryInterface.dropTable("ObjectLikes");
   }
 };

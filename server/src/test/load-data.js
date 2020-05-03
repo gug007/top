@@ -26,7 +26,7 @@ function createObjects(tagId, objects) {
   );
 }
 
-const createtags = async () => {
+const createTags = async () => {
   await emptyDirectory(BUCKET_NAME, "obj");
 
   tags.map(async ([name, objects]) => {
@@ -42,4 +42,10 @@ const createtags = async () => {
   });
 };
 
-createtags();
+const init = async () => {
+  const { token } = await post("http://localhost:4010/guest");
+  global.token = token;
+  createTags();
+};
+
+init();

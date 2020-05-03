@@ -2,6 +2,8 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    return Promise.resolve();
+    /*
     const bcrypt = require("bcrypt");
     return queryInterface.bulkInsert(
       "Users",
@@ -24,7 +26,7 @@ module.exports = {
         }
       ],
       {}
-    );
+    );*/
   },
 
   down: (queryInterface, Sequelize) => {

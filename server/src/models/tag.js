@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     Tag.belongsTo(models.User, {
       foreignKey: "userId"
     });
+    Tag.hasMany(models.ObjectLike, {
+      foreignKey: "tagId",
+      as: "likes"
+    });
   };
   return Tag;
 };
