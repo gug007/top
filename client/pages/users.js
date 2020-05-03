@@ -17,8 +17,8 @@ const Users = ({ users }) => (
         <Table aria-label="users table">
           <TableHead>
             <TableRow>
-              <TableCell></TableCell>
-              <TableCell align="right">date</TableCell>
+              <TableCell>User</TableCell>
+              <TableCell align="right">Joined</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
