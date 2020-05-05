@@ -3,7 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ButtonBase from "@material-ui/core/ButtonBase";
+import IconButton from "@material-ui/core/IconButton";
 import staticUrl from "../../utils/static";
 
 const Item = ({ data, onLike, userId }) => (
@@ -43,19 +43,25 @@ const Item = ({ data, onLike, userId }) => (
           </Box>
         )}
       </Box>
-      <Box pt={1.5} display="flex" justifyContent="center" alignItems="center">
-        <ButtonBase onClick={onLike}>
+      <Box
+        pt={1.5}
+        m={-1}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <IconButton onClick={onLike}>
           {data.likes.some(v => v.userId === userId) ? (
             <FavoriteIcon color="secondary" />
           ) : (
             <FavoriteBorderIcon color="disabled" />
           )}
-          <Box pl={0.5} clone>
-            <Typography variant="body1" color="textSecondary">
-              {data.likes.length}
-            </Typography>
-          </Box>
-        </ButtonBase>
+        </IconButton>
+        <Box ml={-1} css={{ background: "white" }}>
+          <Typography variant="body1" color="textSecondary">
+            {data.likes.length}
+          </Typography>
+        </Box>
       </Box>
     </Paper>
   </Box>
