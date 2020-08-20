@@ -7,7 +7,7 @@
   "homepage": "https://github.com/gug007/social-BE#readme",
   "dependencies": {
     "aws-sdk": "^2.658.0",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "isomorphic-unfetch": "^3.0.0",
