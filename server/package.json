@@ -6,7 +6,7 @@
   "license": "ISC",
   "homepage": "https://github.com/gug007/social-BE#readme",
   "dependencies": {
-    "aws-sdk": "^2.658.0",
+    "aws-sdk": "^2.814.0",
     "bcrypt": "^3.0.7",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
